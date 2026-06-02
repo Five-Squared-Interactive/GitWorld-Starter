@@ -1,0 +1,77 @@
+name: Deploy World to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout world content
+        uses: actions/checkout@v4
+
+      - name: Download WebVerse Runtime
+        run: |
+          mkdir -p _site/runtime
+          curl -L -o runtime.zip \
+            "https://webverse-runtime.s3.us-east-1.amazonaws.com/builds/2026-05-24_f800041/WebGL-Compressed-2026-05-24_f800041.zip"
+          unzip -o runtime.zip -d _site/runtime
+
+      - name: Register world and get sync ID
+        run: |
+          GITWORLDS_API="${GITWORLDS_API_URL:-https://gitworlds.worldhub.me}"
+          PAGES_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+          RESPONSE=$(curl -sf -X POST "$GITWORLDS_API/register" \
+            -H "Content-Type: application/json" \
+            -d "{\"url\":\"${{ github.server_url }}/${{ github.repository }}\",\"name\":\"${{ github.event.repository.name }}\",\"pagesUrl\":\"$PAGES_URL\"}" \
+            || echo '{}')
+          SYNC_ID=$(echo "$RESPONSE" | jq -r '.syncId // empty')
+          BROKER_URL=$(echo "$RESPONSE" | jq -r '.brokerUrl // empty')
+          if [ -n "$SYNC_ID" ] && [ -n "$BROKER_URL" ]; then
+            echo "SYNC_ID=$SYNC_ID" >> $GITHUB_ENV
+            echo "BROKER_URL=$BROKER_URL" >> $GITHUB_ENV
+            echo "Registered: syncId=$SYNC_ID broker=$BROKER_URL"
+          else
+            echo "Warning: Could not register with GitWorlds service. Multiplayer disabled."
+          fi
+
+      - name: Assemble world content
+        run: |
+          # Copy world files into _site alongside runtime
+          cp index.html _site/
+          cp .nojekyll _site/
+          cp world.veml _site/
+          cp -r scripts _site/
+          cp -r panels _site/
+
+          # Inject sync ID into VEML if registration succeeded
+          if [ -n "$SYNC_ID" ]; then
+            sed -i "s|REPLACE-WITH-YOUR-UUID|$SYNC_ID|" _site/world.veml
+            sed -i "s|wss://mqtt.webverse.info:15526|$BROKER_URL|" _site/world.veml
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

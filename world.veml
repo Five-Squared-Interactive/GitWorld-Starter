@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<veml xmlns="http://www.fivesqd.com/schemas/veml/3.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <metadata>
+    <title>The Overlook</title>
+    <capability>javascript</capability>
+    <script>scripts/lib/thirdpersoncharacter.js</script>
+    <script>scripts/init.js</script>
+    <script>scripts/bridge.js</script>
+    <inputevent input="move" event="MoveCharacter(?);" />
+    <inputevent input="endmove" event="EndMoveCharacter();" />
+    <inputevent input="look" event="LookCharacter(?);" />
+    <inputevent input="endlook" event="EndLookCharacter();" />
+    <inputevent input="key" event="OnKeyPress(?);" />
+    <inputevent input="endkey" event="OnKeyRelease(?);" />
+    <inputevent input="lefttouchpadvaluechange" event="MoveCharacter(?);" />
+    <inputevent input="righttouchpadvaluechange" event="LiftCharacter(?);" />
+    <inputevent input="leftstickvaluechange" event="MoveCharacter(?);" />
+    <inputevent input="rightstickvaluechange" event="LookCharacter(?);" />
+    <controlflags>
+      <left-vr-pointer>teleport</left-vr-pointer>
+      <right-vr-pointer>ui</right-vr-pointer>
+      <left-vr-poker>false</left-vr-poker>
+      <right-vr-poker>false</right-vr-poker>
+      <left-hand-interaction>false</left-hand-interaction>
+      <right-hand-interaction>false</right-hand-interaction>
+      <turn-locomotion>snap</turn-locomotion>
+      <joystick-motion>true</joystick-motion>
+      <left-grab-move>true</left-grab-move>
+      <right-grab-move>false</right-grab-move>
+      <two-handed-grab-move>false</two-handed-grab-move>
+    </controlflags>
+    <!-- Multiplayer: activated automatically by the deploy workflow when
+         the GitWorlds service is reachable. To disable, remove this block. -->
+    <synchronizationservice type="vss"
+        address="wss://mqtt.webverse.info:15526"
+        id="REPLACE-WITH-YOUR-UUID"
+        session="the-overlook" />
+  </metadata>
+  <environment>
+
+    <!-- === ATMOSPHERE ===
+         The procedural sky creates a dynamic backdrop with sun, clouds,
+         and stars. Try changing day-sky-color or enabling day-night-cycle. -->
+    <background>
+      <lite-procedural-sky sun-entity-tag="sun"
+                           day-night-cycle-enabled="false"
+                           sun-enabled="true" sun-diameter="3"
+                           ground-enabled="true" ground-color="#3a5a2a"
+                           day-horizon-color="#e8a87c" day-sky-color="#1a5276"
+                           clouds-enabled="true" stars-enabled="true"
+                           moon-enabled="true" />
+    </background>
+    <effects>
+      <lite-fog fog-enabled="true" color="#c8b89a" density="0.004" />
+    </effects>
+
+    <!-- === LIGHTING ===
+         Directional light simulating the sun. The rotation controls
+         the angle of sunlight and shadows. -->
+    <entity xsi:type="light" tag="sun" id="sun-light">
+      <transform xsi:type="scaletransform">
+        <position x="0" y="75" z="0" />
+        <rotation x="0.4177" y="-0.2506" z="0" w="0.8733" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+    </entity>
+
+    <!-- === GROUND ===
+         A large green plane as the terrain surface. Scale x and z
+         control the size. The color is applied via the primitive. -->
+    <entity xsi:type="planemesh" tag="ground" id="ground">
+      <transform xsi:type="scaletransform">
+        <position x="0" y="0" z="0" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="100" y="1" z="100" />
+      </transform>
+      <color>#3a6b35</color>
+    </entity>
+
+    <!-- === VIEWPOINT PLATFORM ===
+         A stone platform where the player spawns. -->
+    <entity xsi:type="cylindermesh" tag="platform" id="platform">
+      <transform xsi:type="scaletransform">
+        <position x="0" y="0.15" z="0" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="6" y="0.3" z="6" />
+      </transform>
+      <color>#8B8682</color>
+    </entity>
+
+    <!-- === PATH STONES ===
+         Flat cylinders as stepping stones leading to the cabin.
+         Copy a block and adjust position to extend the path. -->
+    <entity xsi:type="cylindermesh" tag="path-stone" id="stone-1">
+      <transform xsi:type="scaletransform">
+        <position x="2" y="0.06" z="3" />
+        <rotation x="0" y="0.1" z="0" w="0.995" />
+        <scale x="1.4" y="0.12" z="1.4" />
+      </transform>
+      <color>#9B9286</color>
+    </entity>
+    <entity xsi:type="cylindermesh" tag="path-stone" id="stone-2">
+      <transform xsi:type="scaletransform">
+        <position x="3.5" y="0.06" z="5.5" />
+        <rotation x="0" y="0.3" z="0" w="0.954" />
+        <scale x="1.2" y="0.12" z="1.2" />
+      </transform>
+      <color>#8B8378</color>
+    </entity>
+    <entity xsi:type="cylindermesh" tag="path-stone" id="stone-3">
+      <transform xsi:type="scaletransform">
+        <position x="5" y="0.06" z="8" />
+        <rotation x="0" y="-0.2" z="0" w="0.98" />
+        <scale x="1.3" y="0.12" z="1.3" />
+      </transform>
+      <color>#9B9286</color>
+    </entity>
+
+    <!-- === STRUCTURES ===
+         Primitives arranged as a small shelter. Replace these with
+         a mesh entity to use a real 3D model from the asset library. -->
+    <!-- Cabin walls -->
+    <entity xsi:type="cubemesh" tag="cabin" id="cabin-wall-back">
+      <transform xsi:type="scaletransform">
+        <position x="7" y="1.5" z="11" />
+        <rotation x="0" y="0.383" z="0" w="0.924" />
+        <scale x="4" y="3" z="0.2" />
+      </transform>
+      <color>#8B6914</color>
+    </entity>
+    <entity xsi:type="cubemesh" tag="cabin" id="cabin-wall-left">
+      <transform xsi:type="scaletransform">
+        <position x="5.27" y="1.5" z="9.73" />
+        <rotation x="0" y="0.924" z="0" w="0.383" />
+        <scale x="3" y="3" z="0.2" />
+      </transform>
+      <color>#7B5B0A</color>
+    </entity>
+    <entity xsi:type="cubemesh" tag="cabin" id="cabin-wall-right">
+      <transform xsi:type="scaletransform">
+        <position x="8.73" y="1.5" z="12.27" />
+        <rotation x="0" y="0.924" z="0" w="0.383" />
+        <scale x="3" y="3" z="0.2" />
+      </transform>
+      <color>#7B5B0A</color>
+    </entity>
+    <!-- Cabin roof -->
+    <entity xsi:type="cubemesh" tag="cabin" id="cabin-roof">
+      <transform xsi:type="scaletransform">
+        <position x="7" y="3.1" z="11" />
+        <rotation x="0" y="0.383" z="0" w="0.924" />
+        <scale x="4.6" y="0.2" z="3.6" />
+      </transform>
+      <color>#5C4033</color>
+    </entity>
+
+    <!-- === DECORATIVE PILLARS ===
+         Stone pillars flanking the viewpoint platform. -->
+    <entity xsi:type="cylindermesh" tag="pillar" id="pillar-left">
+      <transform xsi:type="scaletransform">
+        <position x="-3" y="1" z="1" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="0.4" y="2" z="0.4" />
+      </transform>
+      <color>#A0998C</color>
+    </entity>
+    <entity xsi:type="spheremesh" tag="pillar-cap" id="pillar-cap-left">
+      <transform xsi:type="scaletransform">
+        <position x="-3" y="2.1" z="1" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="0.6" y="0.3" z="0.6" />
+      </transform>
+      <color>#C8B89A</color>
+    </entity>
+    <entity xsi:type="cylindermesh" tag="pillar" id="pillar-right">
+      <transform xsi:type="scaletransform">
+        <position x="3" y="1" z="1" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="0.4" y="2" z="0.4" />
+      </transform>
+      <color>#A0998C</color>
+    </entity>
+    <entity xsi:type="spheremesh" tag="pillar-cap" id="pillar-cap-right">
+      <transform xsi:type="scaletransform">
+        <position x="3" y="2.1" z="1" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="0.6" y="0.3" z="0.6" />
+      </transform>
+      <color>#C8B89A</color>
+    </entity>
+
+    <!-- === TREES ===
+         Cone + cylinder primitives simulating trees. Replace with
+         mesh entities from the asset library for realistic models.
+         Example (uncomment when CDN is ready):
+         <entity xsi:type="mesh" tag="tree" id="oak-1">
+           <transform xsi:type="scaletransform">
+             <position x="-8" y="0" z="6" />
+             <rotation x="0" y="0" z="0" w="1" />
+             <scale x="1" y="1" z="1" />
+           </transform>
+           <mesh-name>oak</mesh-name>
+           <mesh-resource>https://cdn.webverse.info/library/nature/trees/oak-1.glb</mesh-resource>
+         </entity>
+    -->
+    <!-- Tree 1 -->
+    <entity xsi:type="cylindermesh" tag="trunk" id="trunk-1">
+      <transform xsi:type="scaletransform">
+        <position x="-8" y="1.5" z="6" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="0.4" y="3" z="0.4" />
+      </transform>
+      <color>#5C4033</color>
+    </entity>
+    <entity xsi:type="conemesh" tag="foliage" id="foliage-1">
+      <transform xsi:type="scaletransform">
+        <position x="-8" y="4.5" z="6" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="3" y="4" z="3" />
+      </transform>
+      <color>#2E7D32</color>
+    </entity>
+    <!-- Tree 2 -->
+    <entity xsi:type="cylindermesh" tag="trunk" id="trunk-2">
+      <transform xsi:type="scaletransform">
+        <position x="-5" y="1.2" z="14" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="0.35" y="2.4" z="0.35" />
+      </transform>
+      <color>#6B4226</color>
+    </entity>
+    <entity xsi:type="conemesh" tag="foliage" id="foliage-2">
+      <transform xsi:type="scaletransform">
+        <position x="-5" y="3.6" z="14" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="2.5" y="3.5" z="2.5" />
+      </transform>
+      <color>#388E3C</color>
+    </entity>
+    <!-- Tree 3 -->
+    <entity xsi:type="cylindermesh" tag="trunk" id="trunk-3">
+      <transform xsi:type="scaletransform">
+        <position x="12" y="1" z="5" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="0.5" y="2" z="0.5" />
+      </transform>
+      <color>#5C4033</color>
+    </entity>
+    <entity xsi:type="spheremesh" tag="foliage" id="foliage-3">
+      <transform xsi:type="scaletransform">
+        <position x="12" y="3.5" z="5" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="4" y="3" z="4" />
+      </transform>
+      <color>#1B5E20</color>
+    </entity>
+
+    <!-- === WATER ===
+         A small pond near the cabin. -->
+    <entity xsi:type="planemesh" tag="water" id="pond">
+      <transform xsi:type="scaletransform">
+        <position x="12" y="0.05" z="14" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="6" y="1" z="4" />
+      </transform>
+      <color>#1A6B8A</color>
+    </entity>
+
+    <!-- === GLOWING ORBS ===
+         Floating spheres that add visual interest. -->
+    <entity xsi:type="spheremesh" tag="orb" id="orb-1">
+      <transform xsi:type="scaletransform">
+        <position x="-2" y="3" z="8" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="0.3" y="0.3" z="0.3" />
+      </transform>
+      <color>#FFD700</color>
+    </entity>
+    <entity xsi:type="spheremesh" tag="orb" id="orb-2">
+      <transform xsi:type="scaletransform">
+        <position x="4" y="2.5" z="12" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="0.25" y="0.25" z="0.25" />
+      </transform>
+      <color>#FF6B35</color>
+    </entity>
+    <entity xsi:type="spheremesh" tag="orb" id="orb-3">
+      <transform xsi:type="scaletransform">
+        <position x="10" y="4" z="9" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="0.35" y="0.35" z="0.35" />
+      </transform>
+      <color>#E040FB</color>
+    </entity>
+
+    <!-- === WELCOME PANEL ===
+         Screen-space HTML overlay showing world info. Edit
+         panels/welcome.html to customize the content. -->
+    <entity xsi:type="html" tag="welcome-panel" id="welcome-panel"
+            url="panels/welcome.html"
+            on-message="OnPanelMessage(?)">
+      <transform xsi:type="canvastransform">
+        <position-percent x="0.02" y="0.02" />
+        <size-percent x="0.22" y="0.35" />
+      </transform>
+    </entity>
+
+  </environment>
+</veml>
