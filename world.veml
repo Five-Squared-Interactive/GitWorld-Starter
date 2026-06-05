@@ -58,7 +58,7 @@
     <!-- === LIGHTING ===
          Directional light simulating the sun. The rotation controls
          the angle of sunlight and shadows. -->
-    <entity xsi:type="light" tag="sun" id="sun-light">
+    <entity xsi:type="light" tag="sun" id="9a6f662f-7b1e-43b7-8eff-52e101d45fb0">
       <transform xsi:type="scaletransform">
         <position x="0" y="75" z="0" />
         <rotation x="0.4177" y="-0.2506" z="0" w="0.8733" />
@@ -69,7 +69,7 @@
     <!-- === GROUND ===
          A large green plane as the terrain surface. Scale x and z
          control the size. The color is applied via the primitive. -->
-    <entity xsi:type="planemesh" tag="ground" id="ground">
+    <entity xsi:type="planemesh" tag="ground" id="3bf15fb2-697f-4425-a41b-9eaaf717374d">
       <transform xsi:type="scaletransform">
         <position x="0" y="0" z="0" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -80,7 +80,7 @@
 
     <!-- === VIEWPOINT PLATFORM ===
          A stone platform where the player spawns. -->
-    <entity xsi:type="cylindermesh" tag="platform" id="platform">
+    <entity xsi:type="cylindermesh" tag="platform" id="2a27392f-4bf2-4d5c-925d-fb7dea9702b1">
       <transform xsi:type="scaletransform">
         <position x="0" y="0.15" z="0" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -92,7 +92,7 @@
     <!-- === PATH STONES ===
          Flat cylinders as stepping stones leading to the cabin.
          Copy a block and adjust position to extend the path. -->
-    <entity xsi:type="cylindermesh" tag="path-stone" id="stone-1">
+    <entity xsi:type="cylindermesh" tag="path-stone" id="99b841c0-bb21-459c-8378-f9f32dc917d5">
       <transform xsi:type="scaletransform">
         <position x="2" y="0.06" z="3" />
         <rotation x="0" y="0.1" z="0" w="0.995" />
@@ -100,7 +100,7 @@
       </transform>
       <color>#9B9286</color>
     </entity>
-    <entity xsi:type="cylindermesh" tag="path-stone" id="stone-2">
+    <entity xsi:type="cylindermesh" tag="path-stone" id="205fd07f-3ba3-42a0-bc18-7b31395a0928">
       <transform xsi:type="scaletransform">
         <position x="3.5" y="0.06" z="5.5" />
         <rotation x="0" y="0.3" z="0" w="0.954" />
@@ -108,7 +108,7 @@
       </transform>
       <color>#8B8378</color>
     </entity>
-    <entity xsi:type="cylindermesh" tag="path-stone" id="stone-3">
+    <entity xsi:type="cylindermesh" tag="path-stone" id="ba951d2d-7512-4a87-a69c-449e83cec619">
       <transform xsi:type="scaletransform">
         <position x="5" y="0.06" z="8" />
         <rotation x="0" y="-0.2" z="0" w="0.98" />
@@ -121,7 +121,7 @@
          Primitives arranged as a small shelter. Replace these with
          a mesh entity to use a real 3D model from the asset library. -->
     <!-- Cabin walls -->
-    <entity xsi:type="cubemesh" tag="cabin" id="cabin-wall-back">
+    <entity xsi:type="cubemesh" tag="cabin" id="507cdf2d-ad42-42cd-a853-a7a9fed08089">
       <transform xsi:type="scaletransform">
         <position x="7" y="1.5" z="11" />
         <rotation x="0" y="0.383" z="0" w="0.924" />
@@ -129,7 +129,7 @@
       </transform>
       <color>#8B6914</color>
     </entity>
-    <entity xsi:type="cubemesh" tag="cabin" id="cabin-wall-left">
+    <entity xsi:type="cubemesh" tag="cabin" id="d33eaeb1-ad24-413e-a1ce-9e72fd6d0035">
       <transform xsi:type="scaletransform">
         <position x="5.27" y="1.5" z="9.73" />
         <rotation x="0" y="0.924" z="0" w="0.383" />
@@ -137,7 +137,7 @@
       </transform>
       <color>#7B5B0A</color>
     </entity>
-    <entity xsi:type="cubemesh" tag="cabin" id="cabin-wall-right">
+    <entity xsi:type="cubemesh" tag="cabin" id="d599d67e-24ce-4534-aa35-3f096716a705">
       <transform xsi:type="scaletransform">
         <position x="8.73" y="1.5" z="12.27" />
         <rotation x="0" y="0.924" z="0" w="0.383" />
@@ -146,7 +146,7 @@
       <color>#7B5B0A</color>
     </entity>
     <!-- Cabin roof -->
-    <entity xsi:type="cubemesh" tag="cabin" id="cabin-roof">
+    <entity xsi:type="cubemesh" tag="cabin" id="3ca7fabe-d821-4781-a26c-f05f95ab5d98">
       <transform xsi:type="scaletransform">
         <position x="7" y="3.1" z="11" />
         <rotation x="0" y="0.383" z="0" w="0.924" />
@@ -157,7 +157,7 @@
 
     <!-- === DECORATIVE PILLARS ===
          Stone pillars flanking the viewpoint platform. -->
-    <entity xsi:type="cylindermesh" tag="pillar" id="pillar-left">
+    <entity xsi:type="cylindermesh" tag="pillar" id="362569b2-ddd5-4718-9291-40827e561c25">
       <transform xsi:type="scaletransform">
         <position x="-3" y="1" z="1" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -165,7 +165,7 @@
       </transform>
       <color>#A0998C</color>
     </entity>
-    <entity xsi:type="spheremesh" tag="pillar-cap" id="pillar-cap-left">
+    <entity xsi:type="spheremesh" tag="pillar-cap" id="8fb4eeb7-e655-4a1f-aa9d-100134cf6f49">
       <transform xsi:type="scaletransform">
         <position x="-3" y="2.1" z="1" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -173,7 +173,7 @@
       </transform>
       <color>#C8B89A</color>
     </entity>
-    <entity xsi:type="cylindermesh" tag="pillar" id="pillar-right">
+    <entity xsi:type="cylindermesh" tag="pillar" id="11f8eb80-dcd9-40de-90b0-356437309e35">
       <transform xsi:type="scaletransform">
         <position x="3" y="1" z="1" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -181,7 +181,7 @@
       </transform>
       <color>#A0998C</color>
     </entity>
-    <entity xsi:type="spheremesh" tag="pillar-cap" id="pillar-cap-right">
+    <entity xsi:type="spheremesh" tag="pillar-cap" id="0a201cd1-371d-483d-9e9b-916da59f4682">
       <transform xsi:type="scaletransform">
         <position x="3" y="2.1" z="1" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -205,7 +205,7 @@
          </entity>
     -->
     <!-- Tree 1 -->
-    <entity xsi:type="cylindermesh" tag="trunk" id="trunk-1">
+    <entity xsi:type="cylindermesh" tag="trunk" id="25aa905d-1f25-46a7-b0dd-1b4d42f5bd6e">
       <transform xsi:type="scaletransform">
         <position x="-8" y="1.5" z="6" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -213,7 +213,7 @@
       </transform>
       <color>#5C4033</color>
     </entity>
-    <entity xsi:type="conemesh" tag="foliage" id="foliage-1">
+    <entity xsi:type="conemesh" tag="foliage" id="f3ff6b49-41cf-4b2a-8edb-dba138567fe4">
       <transform xsi:type="scaletransform">
         <position x="-8" y="4.5" z="6" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -222,7 +222,7 @@
       <color>#2E7D32</color>
     </entity>
     <!-- Tree 2 -->
-    <entity xsi:type="cylindermesh" tag="trunk" id="trunk-2">
+    <entity xsi:type="cylindermesh" tag="trunk" id="29f0ee8b-9c3d-4e65-842f-fd66464b3cb0">
       <transform xsi:type="scaletransform">
         <position x="-5" y="1.2" z="14" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -230,7 +230,7 @@
       </transform>
       <color>#6B4226</color>
     </entity>
-    <entity xsi:type="conemesh" tag="foliage" id="foliage-2">
+    <entity xsi:type="conemesh" tag="foliage" id="dc870bdb-4c50-4362-9d44-e5b3ae03b2d4">
       <transform xsi:type="scaletransform">
         <position x="-5" y="3.6" z="14" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -239,7 +239,7 @@
       <color>#388E3C</color>
     </entity>
     <!-- Tree 3 -->
-    <entity xsi:type="cylindermesh" tag="trunk" id="trunk-3">
+    <entity xsi:type="cylindermesh" tag="trunk" id="d792019b-052f-4710-b51f-a1d6292b979a">
       <transform xsi:type="scaletransform">
         <position x="12" y="1" z="5" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -247,7 +247,7 @@
       </transform>
       <color>#5C4033</color>
     </entity>
-    <entity xsi:type="spheremesh" tag="foliage" id="foliage-3">
+    <entity xsi:type="spheremesh" tag="foliage" id="816b97f4-4e0b-43ef-91f6-6d2a8f079a69">
       <transform xsi:type="scaletransform">
         <position x="12" y="3.5" z="5" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -258,7 +258,7 @@
 
     <!-- === WATER ===
          A small pond near the cabin. -->
-    <entity xsi:type="planemesh" tag="water" id="pond">
+    <entity xsi:type="planemesh" tag="water" id="85db6e98-e0d5-47d0-92ab-48c8d3978bc3">
       <transform xsi:type="scaletransform">
         <position x="12" y="0.05" z="14" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -269,7 +269,7 @@
 
     <!-- === GLOWING ORBS ===
          Floating spheres that add visual interest. -->
-    <entity xsi:type="spheremesh" tag="orb" id="orb-1">
+    <entity xsi:type="spheremesh" tag="orb" id="f5813392-9d72-49a2-97c8-b8deeb690996">
       <transform xsi:type="scaletransform">
         <position x="-2" y="3" z="8" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -277,7 +277,7 @@
       </transform>
       <color>#FFD700</color>
     </entity>
-    <entity xsi:type="spheremesh" tag="orb" id="orb-2">
+    <entity xsi:type="spheremesh" tag="orb" id="8b2f9e88-c743-4810-a7c5-50317bbbaef9">
       <transform xsi:type="scaletransform">
         <position x="4" y="2.5" z="12" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -285,7 +285,7 @@
       </transform>
       <color>#FF6B35</color>
     </entity>
-    <entity xsi:type="spheremesh" tag="orb" id="orb-3">
+    <entity xsi:type="spheremesh" tag="orb" id="5554662f-5f3d-43e0-b523-b22d982def3f">
       <transform xsi:type="scaletransform">
         <position x="10" y="4" z="9" />
         <rotation x="0" y="0" z="0" w="1" />
@@ -297,7 +297,7 @@
     <!-- === WELCOME PANEL ===
          Screen-space HTML overlay showing world info. Edit
          panels/welcome.html to customize the content. -->
-    <entity xsi:type="html" tag="welcome-panel" id="welcome-panel"
+    <entity xsi:type="html" tag="welcome-panel" id="414f638d-7f97-4195-88a9-8ed8a5b6f03c"
             url="panels/welcome.html"
             on-message="OnPanelMessage(?)">
       <transform xsi:type="canvastransform">
