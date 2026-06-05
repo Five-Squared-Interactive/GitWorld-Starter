@@ -37,20 +37,14 @@
 
 <script>
   // Ensure world_url and other required query parameters are set for WebVerse
-  var params = new URLSearchParams(window.location.search);
-  if (!params.has("world_url")) {
+  if (window.location.search.indexOf("world_url") === -1) {
     var basePath = window.location.pathname.replace(/\/index\.html$/, "").replace(/\/$/, "");
     var worldUrl = window.location.origin + basePath + "/world.veml";
-    params.set("main_app_id", "00000000-0000-0000-0000-000000000000");
-    params.set("daemon_port", "5525");
-    params.set("max_entries", "2048");
-    params.set("max_entry_length", "2048");
-    params.set("max_key_length", "512");
-    params.set("tab_id", "100");
-    params.set("files_directory", "files");
-    params.set("world_load_timeout", "300");
-    params.set("world_url", worldUrl);
-    window.location.href = window.location.origin + window.location.pathname + "?" + params.toString();
+    window.location.href = window.location.origin + window.location.pathname
+      + "?main_app_id=00000000-0000-0000-0000-000000000000"
+      + "&daemon_port=5525&max_entries=2048&max_entry_length=2048&max_key_length=512"
+      + "&tab_id=100&files_directory=files&world_load_timeout=300"
+      + "&world_url=" + worldUrl;
   }
 
   var buildUrl = "runtime/Build";
