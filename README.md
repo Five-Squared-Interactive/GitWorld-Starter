@@ -10,10 +10,12 @@ No server required. No build tools to install. Just edit and push.
 
 ## Quick Start
 
-1. **Fork** this repository
+1. **Fork** this repository (or click "Use this template")
 2. Go to **Settings > Pages** and set Source to **GitHub Actions**
 3. Push any change (or manually trigger the workflow)
 4. Visit `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/`
+
+For a comprehensive walkthrough — from your first edit to multiplayer — see the **[Full Tutorial](docs/tutorial.md)**.
 
 ## Project Structure
 
@@ -40,22 +42,23 @@ index.html                  # WebGL runtime loader page
 **Add an object** — insert an entity in the `<environment>` section:
 
 ```xml
-<entity xsi:type="cubemesh" tag="my-box" id="my-box">
+<entity xsi:type="cubemesh" tag="my-box" id="c1d2e3f4-a5b6-7890-cdef-1234567890ab">
   <transform xsi:type="scaletransform">
     <position x="5" y="1" z="5" />
     <rotation x="0" y="0" z="0" w="1" />
     <scale x="2" y="2" z="2" />
   </transform>
-  <color>#FF5722</color>
 </entity>
 ```
+
+> **Note:** Entity `id` values must be valid UUIDs. Generate one at [uuidgenerator.net](https://www.uuidgenerator.net/).
 
 **Available primitive types:** `cubemesh`, `spheremesh`, `cylindermesh`, `conemesh`, `planemesh`, `capsule`
 
 **Use a 3D model** (glTF/GLB):
 
 ```xml
-<entity xsi:type="mesh" tag="tree" id="oak-1">
+<entity xsi:type="mesh" tag="tree" id="d4e5f6a7-b8c9-0123-def4-567890abcdef">
   <transform xsi:type="scaletransform">
     <position x="-8" y="0" z="6" />
     <rotation x="0" y="0" z="0" w="1" />
@@ -91,7 +94,7 @@ The `<lite-procedural-sky>` element controls the atmosphere:
 Screen-space UI overlays using standard HTML/CSS/JS. Position and size are specified as percentages of the viewport:
 
 ```xml
-<entity xsi:type="html" tag="my-panel" id="my-panel"
+<entity xsi:type="html" tag="my-panel" id="e5f6a7b8-c9d0-1234-ef56-7890abcdef12"
         url="panels/my-panel.html"
         on-message="OnMyPanelMessage(?)">
   <transform xsi:type="canvastransform">
