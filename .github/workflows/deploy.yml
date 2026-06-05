@@ -26,6 +26,7 @@ jobs:
 
       - name: Download WebVerse Runtime
         run: |
+          mkdir -p _site/runtime-tmp
           curl -L -o runtime.zip \
             "https://my.worldhub.me/webverse-lite/WebLite.zip"
           unzip -o runtime.zip -d _site/runtime-tmp || true
