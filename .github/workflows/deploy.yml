@@ -30,6 +30,10 @@ jobs:
           curl -L -o runtime.zip \
             "https://webverse-runtime.s3.us-east-1.amazonaws.com/builds/2026-05-24_f800041/WebGL-Compressed-2026-05-24_f800041.zip"
           unzip -o runtime.zip -d _site/runtime || true
+          # Rename .unityweb to .gz so browsers handle decompression natively
+          cd _site/runtime/Build
+          for f in *.unityweb; do mv "$f" "${f%.unityweb}.gz"; done
+          cd ../../..
 
       - name: Register world and get sync ID
         run: |
