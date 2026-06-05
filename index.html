@@ -36,11 +36,19 @@
   </div>
 
 <script>
-  // Ensure world_url query parameter is set so WebVerse knows which world to load
+  // Ensure world_url and other required query parameters are set for WebVerse
   var params = new URLSearchParams(window.location.search);
   if (!params.has("world_url")) {
     var basePath = window.location.pathname.replace(/\/index\.html$/, "").replace(/\/$/, "");
     var worldUrl = window.location.origin + basePath + "/world.veml";
+    params.set("main_app_id", "00000000-0000-0000-0000-000000000000");
+    params.set("daemon_port", "5525");
+    params.set("max_entries", "2048");
+    params.set("max_entry_length", "2048");
+    params.set("max_key_length", "512");
+    params.set("tab_id", "100");
+    params.set("files_directory", "files");
+    params.set("world_load_timeout", "300");
     params.set("world_url", worldUrl);
     window.location.search = params.toString();
   }
