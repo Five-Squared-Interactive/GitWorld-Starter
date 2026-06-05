@@ -32,11 +32,6 @@ jobs:
           unzip -o runtime.zip -d _site/runtime-tmp || true
           mv _site/runtime-tmp/WebLite _site/runtime
           rm -rf _site/runtime-tmp
-          # Rename .unityweb to .gz — GitHub Pages serves .gz with
-          # Content-Encoding: gzip so the browser decompresses natively
-          cd _site/runtime/Build
-          for f in *.unityweb; do mv "$f" "${f%.unityweb}.gz"; done
-          cd ../../..
 
       - name: Register world and get sync ID
         run: |
