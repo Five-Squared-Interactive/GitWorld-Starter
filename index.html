@@ -50,7 +50,7 @@
     params.set("files_directory", "files");
     params.set("world_load_timeout", "300");
     params.set("world_url", worldUrl);
-    window.location.search = params.toString();
+    window.location.href = window.location.origin + window.location.pathname + "?" + params.toString();
   }
 
   var buildUrl = "runtime/Build";
