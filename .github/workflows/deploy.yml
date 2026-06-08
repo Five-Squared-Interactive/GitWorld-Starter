@@ -32,6 +32,13 @@ jobs:
           unzip -o runtime.zip -d _site/runtime-tmp || true
           mv _site/runtime-tmp/WebLite _site/runtime
           rm -rf _site/runtime-tmp
+          # Decompress .gz build files — GitHub Pages does not serve
+          # Content-Encoding: gzip, so the browser can't auto-decompress
+          cd _site/runtime/Build
+          for f in *.gz; do
+            gunzip "$f"
+          done
+          cd ../../..
 
       - name: Register world and get sync ID
         run: |
