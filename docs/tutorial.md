@@ -90,7 +90,7 @@ The deploy workflow runs automatically when you push to `main`. Since creating t
 3. Wait for it to complete (usually about 30 seconds)
 4. Visit: `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/`
 
-You should see a 3D world with a green ground plane, a stone platform, a small cabin, some trees, floating orbs, and a welcome panel. Use **WASD** to move and the **mouse** to look around.
+You should see a 3D world with a green ground plane, a stone spawn platform, a log cabin, pine/oak/birch trees, a campfire, a pond with a dock, lantern posts, rocks, bushes, and a welcome panel. Use **WASD** to move and the **mouse** to look around.
 
 If you see a loading screen that gets stuck, check [Troubleshooting](#17-troubleshooting).
 
@@ -458,13 +458,13 @@ Then add it to your VEML metadata:
 ### Example: Entity Interaction via JavaScript
 
 ```javascript
-// Create a clickable entity that changes color
+// Look up an entity by tag and change its color
 Time.SetTimeout(function() {
-    var orb = MeshEntity.Get("orb");
-    if (orb != null) {
-        orb.SetColor("#FFD700");      // Start gold
-        orb.SetVisibility(true, true);
-        orb.SetInteractionState(InteractionState.Static);
+    var platform = MeshEntity.Get("platform");
+    if (platform != null) {
+        platform.SetColor("#FFD700");      // Gild the spawn platform
+        platform.SetVisibility(true, true);
+        platform.SetInteractionState(InteractionState.Static);
     }
 }, 2);
 ```
@@ -574,24 +574,28 @@ For realistic objects, use **glTF/GLB** 3D models instead of primitives.
     <rotation x="0" y="0" z="0" w="1" />
     <scale x="1" y="1" z="1" />
   </transform>
-  <mesh-name>oak</mesh-name>
-  <mesh-resource>https://your-domain.com/models/oak.glb</mesh-resource>
+  <mesh-name>models/oak_tree.glb</mesh-name>
+  <mesh-resource>models/oak_tree.glb</mesh-resource>
 </entity>
 ```
 
-- `mesh-name` — a label for the mesh (used for caching)
-- `mesh-resource` — URL to the GLB/glTF file (must be publicly accessible via HTTPS with CORS headers)
+- `mesh-name` — the GLB/glTF file the runtime loads. Either a path relative
+  to the world (like the bundled `models/` scenery) or an absolute HTTPS URL.
+- `mesh-resource` — additional files the model needs (a `.gltf`'s `.bin` and
+  texture files). For a self-contained `.glb`, repeat the same path here —
+  the element is required by the schema.
 
-### Hosting Your Models
+This template ships its scenery in the `models/` directory (cabin, trees,
+rocks, campfire, dock, lantern post, bench, fence, bush, stepping stone) —
+copy any mesh entity in `world.veml` and change its position/rotation to
+reuse them. The deploy workflow publishes `models/` alongside the world, so
+relative paths just work.
 
-Your GLB files need to be hosted at a publicly accessible URL with proper CORS headers. Options:
+### Hosting Models Elsewhere
 
-1. **GitHub Releases** — Upload GLB files as release assets in your repo
-2. **GitHub LFS** — Store large files in your repo with Git LFS
-3. **A CDN** — Upload to any CDN that serves with `Access-Control-Allow-Origin: *`
-4. **Your own server** — Any web server with CORS enabled
-
-> **Note:** You cannot reference files from your repo directly (e.g., `./models/tree.glb`) because the model loader requires an absolute HTTPS URL. The file must be served with CORS headers.
+Models can also live on any host that serves with CORS headers
+(`Access-Control-Allow-Origin: *`): a CDN, GitHub Releases, or your own
+server. Use the full HTTPS URL as `mesh-name` in that case.
 
 ### Finding Free 3D Models
 

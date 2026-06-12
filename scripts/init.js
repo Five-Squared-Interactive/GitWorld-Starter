@@ -8,8 +8,8 @@ var character = new ThirdPersonCharacter(
     null,           // id (auto-generated)
     -90,            // min vertical look angle (informational; rig clamps to -90/90)
     90,             // max vertical look angle (informational; rig clamps to -90/90)
-    0.15,           // motion speed multiplier (rig speed = multiplier * 40 m/s)
-    0.1,            // look sensitivity multiplier (rig sensitivity = multiplier * 20)
+    0.1,            // motion speed multiplier (rig speed = multiplier * 40 m/s -> 4 m/s)
+    0.05,           // look sensitivity multiplier (rig sensitivity = multiplier * 20 -> 1.0)
     new Vector3(0, 1, 0),  // spawn position (on the platform)
     null,           // onLoaded callback
     "desktop",      // mode

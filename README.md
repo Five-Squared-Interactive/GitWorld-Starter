@@ -21,6 +21,7 @@ For a comprehensive walkthrough — from your first edit to multiplayer — see 
 
 ```
 world.veml                  # World definition (entities, sky, lighting, etc.)
+models/                     # glTF (.glb) scenery: cabin, trees, rocks, campfire...
 scripts/
   init.js                   # Player character setup
   bridge.js                 # HTML panel <-> world messaging
@@ -64,10 +65,16 @@ index.html                  # WebGL runtime loader page
     <rotation x="0" y="0" z="0" w="1" />
     <scale x="1" y="1" z="1" />
   </transform>
-  <mesh-name>oak</mesh-name>
+  <mesh-name>https://cdn.example.com/models/oak.glb</mesh-name>
   <mesh-resource>https://cdn.example.com/models/oak.glb</mesh-resource>
 </entity>
 ```
+
+> **Note:** `mesh-name` is the glTF file the runtime loads (URL or path relative
+> to the world); `mesh-resource` lists any additional files the model needs
+> (for a self-contained `.glb`, repeat the same path). The bundled scenery in
+> `models/` (cabin, trees, rocks, campfire, dock, and more) works this way —
+> see `world.veml` for working examples you can copy.
 
 ### Transforms
 

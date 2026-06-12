@@ -62,231 +62,393 @@
     </entity>
 
     <!-- === GROUND ===
-         A large green plane as the terrain surface. Scale x and z
-         control the size. The color is applied via the primitive. -->
+         A large green plane as the terrain surface. NOTE: plane, cube, and
+         cylinder primitives are anchored at their minimum corner — the mesh
+         extends in +x/+z from the position. To center one, offset the
+         position by half the scale. -->
     <entity xsi:type="planemesh" tag="ground" id="3bf15fb2-697f-4425-a41b-9eaaf717374d">
       <transform xsi:type="scaletransform">
-        <position x="0" y="0" z="0" />
+        <position x="-250" y="0" z="-250" />
         <rotation x="0" y="0" z="0" w="1" />
-        <scale x="100" y="1" z="100" />
+        <scale x="500" y="1" z="500" />
       </transform>
       <color>#3a6b35</color>
     </entity>
 
-    <!-- === VIEWPOINT PLATFORM ===
+    <!-- === SPAWN PLATFORM ===
          A stone platform where the player spawns. -->
     <entity xsi:type="cylindermesh" tag="platform" id="2a27392f-4bf2-4d5c-925d-fb7dea9702b1">
       <transform xsi:type="scaletransform">
-        <position x="0" y="0.15" z="0" />
+        <position x="-3" y="0" z="-3" />
         <rotation x="0" y="0" z="0" w="1" />
         <scale x="6" y="0.3" z="6" />
       </transform>
       <color>#8B8682</color>
     </entity>
 
-    <!-- === PATH STONES ===
-         Flat cylinders as stepping stones leading to the cabin.
-         Copy a block and adjust position to extend the path. -->
-    <entity xsi:type="cylindermesh" tag="path-stone" id="99b841c0-bb21-459c-8378-f9f32dc917d5">
-      <transform xsi:type="scaletransform">
-        <position x="2" y="0.06" z="3" />
-        <rotation x="0" y="0.1" z="0" w="0.995" />
-        <scale x="1.4" y="0.12" z="1.4" />
-      </transform>
-      <color>#9B9286</color>
-    </entity>
-    <entity xsi:type="cylindermesh" tag="path-stone" id="205fd07f-3ba3-42a0-bc18-7b31395a0928">
-      <transform xsi:type="scaletransform">
-        <position x="3.5" y="0.06" z="5.5" />
-        <rotation x="0" y="0.3" z="0" w="0.954" />
-        <scale x="1.2" y="0.12" z="1.2" />
-      </transform>
-      <color>#8B8378</color>
-    </entity>
-    <entity xsi:type="cylindermesh" tag="path-stone" id="ba951d2d-7512-4a87-a69c-449e83cec619">
-      <transform xsi:type="scaletransform">
-        <position x="5" y="0.06" z="8" />
-        <rotation x="0" y="-0.2" z="0" w="0.98" />
-        <scale x="1.3" y="0.12" z="1.3" />
-      </transform>
-      <color>#9B9286</color>
-    </entity>
-
-    <!-- === STRUCTURES ===
-         Primitives arranged as a small shelter. Replace these with
-         a mesh entity to use a real 3D model from the asset library. -->
-    <!-- Cabin walls -->
-    <entity xsi:type="cubemesh" tag="cabin" id="507cdf2d-ad42-42cd-a853-a7a9fed08089">
-      <transform xsi:type="scaletransform">
-        <position x="7" y="1.5" z="11" />
-        <rotation x="0" y="0.383" z="0" w="0.924" />
-        <scale x="4" y="3" z="0.2" />
-      </transform>
-      <color>#8B6914</color>
-    </entity>
-    <entity xsi:type="cubemesh" tag="cabin" id="d33eaeb1-ad24-413e-a1ce-9e72fd6d0035">
-      <transform xsi:type="scaletransform">
-        <position x="5.27" y="1.5" z="9.73" />
-        <rotation x="0" y="0.924" z="0" w="0.383" />
-        <scale x="3" y="3" z="0.2" />
-      </transform>
-      <color>#7B5B0A</color>
-    </entity>
-    <entity xsi:type="cubemesh" tag="cabin" id="d599d67e-24ce-4534-aa35-3f096716a705">
-      <transform xsi:type="scaletransform">
-        <position x="8.73" y="1.5" z="12.27" />
-        <rotation x="0" y="0.924" z="0" w="0.383" />
-        <scale x="3" y="3" z="0.2" />
-      </transform>
-      <color>#7B5B0A</color>
-    </entity>
-    <!-- Cabin roof -->
-    <entity xsi:type="cubemesh" tag="cabin" id="3ca7fabe-d821-4781-a26c-f05f95ab5d98">
-      <transform xsi:type="scaletransform">
-        <position x="7" y="3.1" z="11" />
-        <rotation x="0" y="0.383" z="0" w="0.924" />
-        <scale x="4.6" y="0.2" z="3.6" />
-      </transform>
-      <color>#5C4033</color>
-    </entity>
-
-    <!-- === DECORATIVE PILLARS ===
-         Stone pillars flanking the viewpoint platform. -->
-    <entity xsi:type="cylindermesh" tag="pillar" id="362569b2-ddd5-4718-9291-40827e561c25">
-      <transform xsi:type="scaletransform">
-        <position x="-3" y="1" z="1" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="0.4" y="2" z="0.4" />
-      </transform>
-      <color>#A0998C</color>
-    </entity>
-    <entity xsi:type="spheremesh" tag="pillar-cap" id="8fb4eeb7-e655-4a1f-aa9d-100134cf6f49">
-      <transform xsi:type="scaletransform">
-        <position x="-3" y="2.1" z="1" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="0.6" y="0.3" z="0.6" />
-      </transform>
-      <color>#C8B89A</color>
-    </entity>
-    <entity xsi:type="cylindermesh" tag="pillar" id="11f8eb80-dcd9-40de-90b0-356437309e35">
-      <transform xsi:type="scaletransform">
-        <position x="3" y="1" z="1" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="0.4" y="2" z="0.4" />
-      </transform>
-      <color>#A0998C</color>
-    </entity>
-    <entity xsi:type="spheremesh" tag="pillar-cap" id="0a201cd1-371d-483d-9e9b-916da59f4682">
-      <transform xsi:type="scaletransform">
-        <position x="3" y="2.1" z="1" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="0.6" y="0.3" z="0.6" />
-      </transform>
-      <color>#C8B89A</color>
-    </entity>
-
-    <!-- === TREES ===
-         Cone + cylinder primitives simulating trees. Replace with
-         mesh entities from the asset library for realistic models.
-         Example (uncomment when CDN is ready):
-         <entity xsi:type="mesh" tag="tree" id="oak-1">
-           <transform xsi:type="scaletransform">
-             <position x="-8" y="0" z="6" />
-             <rotation x="0" y="0" z="0" w="1" />
-             <scale x="1" y="1" z="1" />
-           </transform>
-           <mesh-name>oak</mesh-name>
-           <mesh-resource>https://cdn.webverse.info/library/nature/trees/oak-1.glb</mesh-resource>
-         </entity>
-    -->
-    <!-- Tree 1 -->
-    <entity xsi:type="cylindermesh" tag="trunk" id="25aa905d-1f25-46a7-b0dd-1b4d42f5bd6e">
-      <transform xsi:type="scaletransform">
-        <position x="-8" y="1.5" z="6" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="0.4" y="3" z="0.4" />
-      </transform>
-      <color>#5C4033</color>
-    </entity>
-    <entity xsi:type="conemesh" tag="foliage" id="f3ff6b49-41cf-4b2a-8edb-dba138567fe4">
-      <transform xsi:type="scaletransform">
-        <position x="-8" y="4.5" z="6" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="3" y="4" z="3" />
-      </transform>
-      <color>#2E7D32</color>
-    </entity>
-    <!-- Tree 2 -->
-    <entity xsi:type="cylindermesh" tag="trunk" id="29f0ee8b-9c3d-4e65-842f-fd66464b3cb0">
-      <transform xsi:type="scaletransform">
-        <position x="-5" y="1.2" z="14" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="0.35" y="2.4" z="0.35" />
-      </transform>
-      <color>#6B4226</color>
-    </entity>
-    <entity xsi:type="conemesh" tag="foliage" id="dc870bdb-4c50-4362-9d44-e5b3ae03b2d4">
-      <transform xsi:type="scaletransform">
-        <position x="-5" y="3.6" z="14" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="2.5" y="3.5" z="2.5" />
-      </transform>
-      <color>#388E3C</color>
-    </entity>
-    <!-- Tree 3 -->
-    <entity xsi:type="cylindermesh" tag="trunk" id="d792019b-052f-4710-b51f-a1d6292b979a">
-      <transform xsi:type="scaletransform">
-        <position x="12" y="1" z="5" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="0.5" y="2" z="0.5" />
-      </transform>
-      <color>#5C4033</color>
-    </entity>
-    <entity xsi:type="spheremesh" tag="foliage" id="816b97f4-4e0b-43ef-91f6-6d2a8f079a69">
-      <transform xsi:type="scaletransform">
-        <position x="12" y="3.5" z="5" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="4" y="3" z="4" />
-      </transform>
-      <color>#1B5E20</color>
-    </entity>
-
-    <!-- === WATER ===
-         A small pond near the cabin. -->
+    <!-- === POND === -->
     <entity xsi:type="planemesh" tag="water" id="85db6e98-e0d5-47d0-92ab-48c8d3978bc3">
       <transform xsi:type="scaletransform">
-        <position x="12" y="0.05" z="14" />
+        <position x="9" y="0.05" z="12" />
         <rotation x="0" y="0" z="0" w="1" />
         <scale x="6" y="1" z="4" />
       </transform>
       <color>#1A6B8A</color>
     </entity>
 
-    <!-- === GLOWING ORBS ===
-         Floating spheres that add visual interest. -->
-    <entity xsi:type="spheremesh" tag="orb" id="f5813392-9d72-49a2-97c8-b8deeb690996">
+    <!-- === STONE PATH ===
+         Stepping stones leading from the platform to the cabin.
+         All scenery below uses glTF models from the models/ directory —
+         copy an entity block and change position/rotation to add more. -->
+    <entity xsi:type="mesh" tag="path-stone" id="769e284c-aa57-4f4d-817a-1f9533754d36">
       <transform xsi:type="scaletransform">
-        <position x="-2" y="3" z="8" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="0.3" y="0.3" z="0.3" />
+        <position x="2.2" y="-0.03" z="3.4" />
+        <rotation x="0" y="0.1305" z="0" w="0.9914" />
+        <scale x="1" y="1" z="1" />
       </transform>
-      <color>#FFD700</color>
+      <mesh-name>models/stepping_stone.glb</mesh-name>
+      <mesh-resource>models/stepping_stone.glb</mesh-resource>
     </entity>
-    <entity xsi:type="spheremesh" tag="orb" id="8b2f9e88-c743-4810-a7c5-50317bbbaef9">
+    <entity xsi:type="mesh" tag="path-stone" id="8151a8c5-916f-45ad-95b1-c7a7247922f8">
       <transform xsi:type="scaletransform">
-        <position x="4" y="2.5" z="12" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="0.25" y="0.25" z="0.25" />
+        <position x="3.3" y="-0.03" z="5.2" />
+        <rotation x="0" y="0.6428" z="0" w="0.766" />
+        <scale x="1" y="1" z="1" />
       </transform>
-      <color>#FF6B35</color>
+      <mesh-name>models/stepping_stone.glb</mesh-name>
+      <mesh-resource>models/stepping_stone.glb</mesh-resource>
     </entity>
-    <entity xsi:type="spheremesh" tag="orb" id="5554662f-5f3d-43e0-b523-b22d982def3f">
+    <entity xsi:type="mesh" tag="path-stone" id="cfa8dba0-68cb-4d5e-9cb2-5ac71204d870">
       <transform xsi:type="scaletransform">
-        <position x="10" y="4" z="9" />
-        <rotation x="0" y="0" z="0" w="1" />
-        <scale x="0.35" y="0.35" z="0.35" />
+        <position x="4.4" y="-0.03" z="7.0" />
+        <rotation x="0" y="0.9659" z="0" w="0.2588" />
+        <scale x="1" y="1" z="1" />
       </transform>
-      <color>#E040FB</color>
+      <mesh-name>models/stepping_stone.glb</mesh-name>
+      <mesh-resource>models/stepping_stone.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="path-stone" id="70591fec-2df5-4478-b8f8-1042b85326a4">
+      <transform xsi:type="scaletransform">
+        <position x="5.3" y="-0.03" z="8.8" />
+        <rotation x="0" y="0.9063" z="0" w="-0.4226" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/stepping_stone.glb</mesh-name>
+      <mesh-resource>models/stepping_stone.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="path-stone" id="43275f4b-416e-49f2-85ca-968d8280bdef">
+      <transform xsi:type="scaletransform">
+        <position x="6.0" y="-0.03" z="10.3" />
+        <rotation x="0" y="0.5" z="0" w="-0.866" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/stepping_stone.glb</mesh-name>
+      <mesh-resource>models/stepping_stone.glb</mesh-resource>
+    </entity>
+
+    <!-- === LOG CABIN === -->
+    <entity xsi:type="mesh" tag="cabin" id="2383975f-f769-47f1-a03e-9cf276bba132">
+      <transform xsi:type="scaletransform">
+        <position x="7.5" y="0" z="11.5" />
+        <rotation x="0" y="-0.9239" z="0" w="0.3827" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/cabin.glb</mesh-name>
+      <mesh-resource>models/cabin.glb</mesh-resource>
+    </entity>
+
+    <!-- === CAMPFIRE CIRCLE === -->
+    <entity xsi:type="mesh" tag="campfire" id="8461439b-0f2c-48f9-b7ca-20859e049d03">
+      <transform xsi:type="scaletransform">
+        <position x="-2.5" y="0" z="5.5" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/campfire.glb</mesh-name>
+      <mesh-resource>models/campfire.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="bench" id="2e63a55f-d62b-40dc-9f27-b6b4b25eb124">
+      <transform xsi:type="scaletransform">
+        <position x="-4.1" y="0" z="5.0" />
+        <rotation x="0" y="0.6088" z="0" w="0.7934" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/bench.glb</mesh-name>
+      <mesh-resource>models/bench.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="bench" id="812b31d6-e927-44c1-8467-93b6fcd5c53e">
+      <transform xsi:type="scaletransform">
+        <position x="-1.5" y="0" z="7.2" />
+        <rotation x="0" y="-0.342" z="0" w="0.9397" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/bench.glb</mesh-name>
+      <mesh-resource>models/bench.glb</mesh-resource>
+    </entity>
+
+    <!-- === DOCK === -->
+    <entity xsi:type="mesh" tag="dock" id="b743e7a4-a6ce-419a-8f1a-29e2f527db7d">
+      <transform xsi:type="scaletransform">
+        <position x="11.5" y="0" z="13.5" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/dock.glb</mesh-name>
+      <mesh-resource>models/dock.glb</mesh-resource>
+    </entity>
+
+    <!-- === LANTERNS === -->
+    <entity xsi:type="mesh" tag="lantern" id="afe85d02-e5d9-42ab-8208-6b0835a1e7e5">
+      <transform xsi:type="scaletransform">
+        <position x="2.7" y="0" z="1.0" />
+        <rotation x="0" y="0.9239" z="0" w="0.3827" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/lantern_post.glb</mesh-name>
+      <mesh-resource>models/lantern_post.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="lantern" id="a4342512-b7e3-40f8-8884-dd5437356ff6">
+      <transform xsi:type="scaletransform">
+        <position x="5.6" y="0" z="9.6" />
+        <rotation x="0" y="-0.3827" z="0" w="0.9239" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/lantern_post.glb</mesh-name>
+      <mesh-resource>models/lantern_post.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="lantern" id="78f3402b-86f8-46e4-a05f-b9a23e379979">
+      <transform xsi:type="scaletransform">
+        <position x="10.7" y="0" z="11.6" />
+        <rotation x="0" y="0.7071" z="0" w="0.7071" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/lantern_post.glb</mesh-name>
+      <mesh-resource>models/lantern_post.glb</mesh-resource>
+    </entity>
+
+    <!-- === TREES === -->
+    <entity xsi:type="mesh" tag="tree" id="8eb81302-7457-40c9-b0ce-37c7d1a44e54">
+      <transform xsi:type="scaletransform">
+        <position x="-8" y="0" z="6" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/oak_tree.glb</mesh-name>
+      <mesh-resource>models/oak_tree.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="tree" id="c4b11723-3ab8-4625-962c-3bf75a0ac794">
+      <transform xsi:type="scaletransform">
+        <position x="-4.5" y="0" z="13.5" />
+        <rotation x="0" y="0.2588" z="0" w="0.9659" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/birch_tree.glb</mesh-name>
+      <mesh-resource>models/birch_tree.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="tree" id="2b297df7-4070-4ed7-bfe7-c468381adcf6">
+      <transform xsi:type="scaletransform">
+        <position x="15" y="0" z="8" />
+        <rotation x="0" y="0.9397" z="0" w="-0.342" />
+        <scale x="0.9" y="0.9" z="0.9" />
+      </transform>
+      <mesh-name>models/birch_tree.glb</mesh-name>
+      <mesh-resource>models/birch_tree.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="tree" id="a0167c96-f8e8-4517-b2b8-0dd7ae77c8de">
+      <transform xsi:type="scaletransform">
+        <position x="12" y="0" z="4.5" />
+        <rotation x="0" y="0.6088" z="0" w="0.7934" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/pine_tree_a.glb</mesh-name>
+      <mesh-resource>models/pine_tree_a.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="tree" id="ba8213f7-2435-4ca7-890a-688c50b15756">
+      <transform xsi:type="scaletransform">
+        <position x="-10" y="0" z="-3" />
+        <rotation x="0" y="0.9848" z="0" w="-0.1736" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/pine_tree_a.glb</mesh-name>
+      <mesh-resource>models/pine_tree_a.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="tree" id="4b388f3e-e686-4287-8f1f-cf45f341e6a7">
+      <transform xsi:type="scaletransform">
+        <position x="2" y="0" z="18" />
+        <rotation x="0" y="0.866" z="0" w="0.5" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/pine_tree_a.glb</mesh-name>
+      <mesh-resource>models/pine_tree_a.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="tree" id="386aaae4-123f-4101-a320-084c0c52073f">
+      <transform xsi:type="scaletransform">
+        <position x="-12" y="0" z="10" />
+        <rotation x="0" y="0.342" z="0" w="0.9397" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/pine_tree_b.glb</mesh-name>
+      <mesh-resource>models/pine_tree_b.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="tree" id="b08ac122-7635-4a2e-a9a0-c9f11aa43efc">
+      <transform xsi:type="scaletransform">
+        <position x="18" y="0" z="12" />
+        <rotation x="0" y="0.9848" z="0" w="0.1736" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/pine_tree_b.glb</mesh-name>
+      <mesh-resource>models/pine_tree_b.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="tree" id="db79207d-1b9c-4376-b55f-d7edb9187d7b">
+      <transform xsi:type="scaletransform">
+        <position x="10" y="0" z="-8" />
+        <rotation x="0" y="0.5" z="0" w="-0.866" />
+        <scale x="0.9" y="0.9" z="0.9" />
+      </transform>
+      <mesh-name>models/pine_tree_b.glb</mesh-name>
+      <mesh-resource>models/pine_tree_b.glb</mesh-resource>
+    </entity>
+
+    <!-- === ROCKS === -->
+    <entity xsi:type="mesh" tag="rock" id="4af9c5ee-01aa-4ba8-bfc8-cb5a8a9dd0ae">
+      <transform xsi:type="scaletransform">
+        <position x="-7" y="-0.02" z="17" />
+        <rotation x="0" y="0.2588" z="0" w="0.9659" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/rock_large.glb</mesh-name>
+      <mesh-resource>models/rock_large.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="rock" id="402587c7-02a6-4b9a-ab7d-e50c245221cc">
+      <transform xsi:type="scaletransform">
+        <position x="16" y="-0.02" z="-2" />
+        <rotation x="0" y="0.9063" z="0" w="0.4226" />
+        <scale x="0.8" y="0.8" z="0.8" />
+      </transform>
+      <mesh-name>models/rock_large.glb</mesh-name>
+      <mesh-resource>models/rock_large.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="rock" id="3f46bb46-a46c-4f00-ad78-ca29c4c7e2e9">
+      <transform xsi:type="scaletransform">
+        <position x="-3.5" y="-0.02" z="9.5" />
+        <rotation x="0" y="0.6088" z="0" w="0.7934" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/rock_medium.glb</mesh-name>
+      <mesh-resource>models/rock_medium.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="rock" id="cc585084-7e80-4085-80c6-a42ac490846d">
+      <transform xsi:type="scaletransform">
+        <position x="8.5" y="-0.02" z="4" />
+        <rotation x="0" y="0.7071" z="0" w="-0.7071" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/rock_medium.glb</mesh-name>
+      <mesh-resource>models/rock_medium.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="rock" id="0d8f1fcb-222b-44c5-87bf-e14f571deba2">
+      <transform xsi:type="scaletransform">
+        <position x="1.5" y="-0.02" z="6.5" />
+        <rotation x="0" y="0.0872" z="0" w="0.9962" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/rock_small.glb</mesh-name>
+      <mesh-resource>models/rock_small.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="rock" id="88eab5d1-afca-44df-9a3e-889d35622b6b">
+      <transform xsi:type="scaletransform">
+        <position x="-5.5" y="-0.02" z="2.5" />
+        <rotation x="0" y="0.9962" z="0" w="-0.0872" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/rock_small.glb</mesh-name>
+      <mesh-resource>models/rock_small.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="rock" id="deae2929-94b8-450e-affd-67bacd9fd494">
+      <transform xsi:type="scaletransform">
+        <position x="10.5" y="-0.02" z="12.3" />
+        <rotation x="0" y="0.7071" z="0" w="0.7071" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/rock_small.glb</mesh-name>
+      <mesh-resource>models/rock_small.glb</mesh-resource>
+    </entity>
+
+    <!-- === BUSHES === -->
+    <entity xsi:type="mesh" tag="bush" id="a774a2b9-055d-42bb-b3d1-0fb83bb3c0bf">
+      <transform xsi:type="scaletransform">
+        <position x="4.5" y="0" z="12.8" />
+        <rotation x="0" y="0" z="0" w="1" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/bush.glb</mesh-name>
+      <mesh-resource>models/bush.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="bush" id="61cead80-f325-4a81-89ff-f7bc9ebe655c">
+      <transform xsi:type="scaletransform">
+        <position x="9.3" y="0" z="9.7" />
+        <rotation x="0" y="0.3827" z="0" w="0.9239" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/bush.glb</mesh-name>
+      <mesh-resource>models/bush.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="bush" id="ffcdbbda-5e54-4fa2-a160-bb9dfe84ff24">
+      <transform xsi:type="scaletransform">
+        <position x="-1.8" y="0" z="3.2" />
+        <rotation x="0" y="0.7071" z="0" w="0.7071" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/bush.glb</mesh-name>
+      <mesh-resource>models/bush.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="bush" id="602bc00b-9742-498a-98eb-a8386724c265">
+      <transform xsi:type="scaletransform">
+        <position x="-6.2" y="0" z="7.8" />
+        <rotation x="0" y="0.9848" z="0" w="-0.1736" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/bush.glb</mesh-name>
+      <mesh-resource>models/bush.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="bush" id="ed290cee-45a3-43c2-9729-884ce4cda2c2">
+      <transform xsi:type="scaletransform">
+        <position x="13.5" y="0" z="12.4" />
+        <rotation x="0" y="0.9848" z="0" w="0.1736" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/bush.glb</mesh-name>
+      <mesh-resource>models/bush.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="bush" id="27552694-2c24-4c0e-ad01-e179d5bafdf1">
+      <transform xsi:type="scaletransform">
+        <position x="5.8" y="0" z="5.6" />
+        <rotation x="0" y="0.8192" z="0" w="-0.5736" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/bush.glb</mesh-name>
+      <mesh-resource>models/bush.glb</mesh-resource>
+    </entity>
+
+    <!-- === FENCE ===
+         Split-rail fence along the cabin garden. -->
+    <entity xsi:type="mesh" tag="fence" id="bf86e4b4-1d18-46af-8e42-71e31451d73d">
+      <transform xsi:type="scaletransform">
+        <position x="9.9" y="0" z="8.5" />
+        <rotation x="0" y="-0.3827" z="0" w="0.9239" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/fence.glb</mesh-name>
+      <mesh-resource>models/fence.glb</mesh-resource>
+    </entity>
+    <entity xsi:type="mesh" tag="fence" id="dbbccac4-9df5-49f7-9629-539628ee9b2e">
+      <transform xsi:type="scaletransform">
+        <position x="11.3" y="0" z="9.9" />
+        <rotation x="0" y="-0.3827" z="0" w="0.9239" />
+        <scale x="1" y="1" z="1" />
+      </transform>
+      <mesh-name>models/fence.glb</mesh-name>
+      <mesh-resource>models/fence.glb</mesh-resource>
     </entity>
 
     <!-- === WELCOME PANEL ===

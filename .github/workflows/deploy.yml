@@ -66,6 +66,7 @@ jobs:
           cp world.veml _site/
           cp -r scripts _site/
           cp -r panels _site/
+          cp -r models _site/
 
           # Inject sync ID into VEML if registration succeeded
           if [ -n "$SYNC_ID" ]; then
