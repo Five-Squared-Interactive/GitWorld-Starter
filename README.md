@@ -123,8 +123,6 @@ Uncomment the `<synchronizationservice>` block in `world.veml` and provide your 
 |-------|--------|
 | W/A/S/D | Move |
 | Mouse | Look |
-| Q | Fly up |
-| Z | Fly down |
 | Space | Jump |
 | VR Sticks | Move + Look |
 

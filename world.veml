@@ -7,16 +7,11 @@
     <script>scripts/lib/thirdpersoncharacter.js</script>
     <script>scripts/init.js</script>
     <script>scripts/bridge.js</script>
-    <inputevent input="move" event="MoveCharacter(?);" />
-    <inputevent input="endmove" event="EndMoveCharacter();" />
-    <inputevent input="look" event="LookCharacter(?);" />
-    <inputevent input="endlook" event="EndLookCharacter();" />
-    <inputevent input="key" event="OnKeyPress(?);" />
-    <inputevent input="endkey" event="OnKeyRelease(?);" />
-    <inputevent input="lefttouchpadvaluechange" event="MoveCharacter(?);" />
-    <inputevent input="righttouchpadvaluechange" event="LiftCharacter(?);" />
-    <inputevent input="leftstickvaluechange" event="MoveCharacter(?);" />
-    <inputevent input="rightstickvaluechange" event="LookCharacter(?);" />
+    <!-- Movement, mouse look, and jumping are handled natively by the
+         WebVerse rig (see scripts/lib/thirdpersoncharacter.js). VR stick
+         locomotion is enabled via the joystick-motion control flag below.
+         Use <inputevent> elements here to wire additional inputs to your
+         own JavaScript functions. -->
     <controlflags>
       <left-vr-pointer>teleport</left-vr-pointer>
       <right-vr-pointer>ui</right-vr-pointer>

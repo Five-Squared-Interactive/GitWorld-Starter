@@ -690,11 +690,17 @@ To disable multiplayer, remove or comment out the `<synchronizationservice>` ele
 Input events connect user actions (keyboard, mouse, VR controllers) to JavaScript functions. They're declared in `<metadata>`:
 
 ```xml
-<inputevent input="move" event="MoveCharacter(?);" />
-<inputevent input="key" event="OnKeyPress(?);" />
+<inputevent input="key" event="HandleKeyPress(?);" />
+<inputevent input="endkey" event="HandleKeyRelease(?);" />
 ```
 
 The `?` is replaced with the input value at runtime (e.g., x/y deltas for movement, key name for keypresses).
+
+> **Note:** This template does not wire any input events for movement — WASD
+> motion, mouse look, and jumping are handled natively by the WebVerse rig
+> once the character is registered as the rig avatar (see
+> `scripts/lib/thirdpersoncharacter.js`). Use input events for custom
+> interactions like hotkeys or VR controller buttons.
 
 | Input | Triggered By | Value Passed |
 |-------|-------------|--------------|
@@ -866,8 +872,6 @@ HTTPNetworking.Request("GET", url, headers, body, callback)
 |-------|--------|
 | W / A / S / D | Move forward / left / backward / right |
 | Mouse | Look around |
-| Q | Fly up |
-| Z | Fly down |
 | Space | Jump |
 | VR Left Stick | Move |
 | VR Right Stick | Look |
